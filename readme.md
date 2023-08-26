@@ -1,7 +1,7 @@
 # 介紹目錄結構，此目錄結構並未完整整理，僅供教學使用。
 
 ## 目錄結構皆是素材包和unity自動生成。
-
+```
 ├─Assets
 │  ├─Scenes
 │  └─SunnyLand Artwork
@@ -48,7 +48,7 @@
 │              ├─jump
 │              └─run
 ├─ other Directory....
-
+```
 # 目錄結構一:Assets
 ``
 ~/.Assets/Scenes -> 世界場景
