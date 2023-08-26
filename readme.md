@@ -79,3 +79,21 @@ tileset.png -> window->2D->Tile Palette 可以將tilset放進Tile Palette中
 1. ``2D->sprite`` 建立物件，並拖拽player idle到 2D物件上
 2. 增加 rigidbody 2D 、box collider 2D 並調整collider 碰撞範圍
 3. tileMap 設定 tile collider 2D
+
+# 移動
+Input 控制項 -> `` Edit->Project Setting->Input ``
+將玩家的鋼體物件的位置 調整到新的vector 上即可完成移動。
+```
+void Movement()
+    {
+        float horizontalmove;
+        horizontalmove=Input.GetAxis("Horizontal");
+
+        if(horizontalmove !=0 )
+        {
+           Debug.Log(horizontalmove);
+            rb.velocity=new Vector2(horizontalmove*speed,rb.velocity.y); // rb new position is on 
+        }
+       // Debug.Log(rb.velocity);
+    }
+```
