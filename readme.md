@@ -97,3 +97,41 @@ void Movement()
        // Debug.Log(rb.velocity);
     }
 ```
+# 開發:移動(自行優化)
+這段代碼感覺可以優化成設置一份InputController
+可以導入InputController
+並且將玩家的鋼體傳入，並且以淺拷貝的方式重新賦予玩家鋼體位置。
+
+創立 InputController namespace 
+代碼如下
+```
+using System.Collections; 
+using System.Collections.Generic;
+using UnityEngine;
+/*
+以上為了拿取 unity引擎的類型推斷(Rigidbody2D)
+*/
+namespace InputController{
+	
+	public class TheX{
+		public static void Movement(Rigidbody2D rb,float speed)
+		{
+             float horizontalmove=Input.GetAxis("Horizontal");
+			 if(horizontalmove!=0)
+			 {
+				 rb.velocity=new Vector2(horizontalmove*speed,rb.velocity.y);
+			 }
+		}
+
+	} // end class
+} // end namespace
+```
+
+玩家代碼重構:
+```
+ void Update()
+{
+    InputController.TheX.Movement(rb,speed);
+}
+```
+現在只要 把自己的鋼體傳入，便可以在遊戲中進行互動。
