@@ -129,6 +129,7 @@ namespace InputController{
 
 玩家代碼重構:
 ```
+using InputController;
  void Update()
 {
     InputController.TheX.Movement(rb,speed);
