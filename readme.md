@@ -116,6 +116,7 @@ namespace InputController{
         Rigidbody2D rb;
         float speedX;
         float speedY;
+        float jumpForce = 0.7f;
         public ThePlayerController(Rigidbody2D playerRb, float playerSpeedX= 10, float playerSpeedY = 10)
         {
             rb = playerRb;
@@ -134,19 +135,25 @@ namespace InputController{
         }
         public void talk()
         {
+        }
+        public bool Grounded
+        {
+            get => Physics2D.Raycast(rb.position, -Vector2.up, 0.1f);
 
         }
         public void jump()
         {
-            if (Input.GetKey("space"))
+            if (Input.GetButton("Jump") && Grounded)
             {
-                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y + 10);
+                rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             }
         }
   
     }//end class
+} // end namespace
 ```
-
+#問題整理:
+目前使用getter 來找尋控制器是否是在地上，如果在地上則使用飛翔的動畫(動畫位置入)，要確認角色是否真的在地上，還未完成正確的回傳值。
 玩家代碼重構:
 ![Alt text](image.png)
 現在只要初始化controller，就可以自己載入腳色的動作。
