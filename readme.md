@@ -105,25 +105,26 @@ void Movement()
 創立 InputController namespace 
 代碼如下
 ```
-using System.Collections; 
-using System.Collections.Generic;
+
 using UnityEngine;
 /*
 以上為了拿取 unity引擎的類型推斷(Rigidbody2D)
 */
 namespace InputController{
-	
-	public class TheX{
-		public static void Movement(Rigidbody2D rb,float speed)
+	public class ThePlayer
+	{
+		public static void Movement(Rigidbody2D rb, float speedX=10,float speedY=10)
 		{
-             float horizontalmove=Input.GetAxis("Horizontal");
-			 if(horizontalmove!=0)
-			 {
-				 rb.velocity=new Vector2(horizontalmove*speed,rb.velocity.y);
-			 }
-		}
 
-	} // end class
+            float horizontalmove = Input.GetAxis("Horizontal");
+			float verticalmove = Input.GetAxis("Vertical");
+            if (horizontalmove != 0||verticalmove!=0)
+            {
+                rb.velocity = new Vector2(horizontalmove * speedX, verticalmove*speedY);
+            }
+        }
+
+	}//end class
 } // end namespace
 ```
 
