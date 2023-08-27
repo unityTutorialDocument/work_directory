@@ -111,34 +111,42 @@ using UnityEngine;
 以上為了拿取 unity引擎的類型推斷(Rigidbody2D)
 */
 namespace InputController{
-		public class ThePlayer
-	{
-		public static void Movement(Rigidbody2D rb, float speedX=10,float speedY=10)
-		{
+    public class ThePlayerController
+    {
+        Rigidbody2D rb;
+        float speedX;
+        float speedY;
+        public ThePlayerController(Rigidbody2D playerRb, float playerSpeedX= 10, float playerSpeedY = 10)
+        {
+            rb = playerRb;
+            speedX = playerSpeedX;
+            speedY = playerSpeedY;
 
+        }
+        public void Movement()
+        {
             float horizontalmove = Input.GetAxis("Horizontal");
-			float verticalmove = Input.GetAxis("Vertical");
-            if (horizontalmove != 0||verticalmove!=0)
+            if (horizontalmove != 0)
             {
                 // if only vertical changement in jump then should use rb.velocity.y instead of movement
-                rb.velocity = new Vector2(horizontalmove * speedX, verticalmove*speedY);
+                rb.velocity = new Vector2(horizontalmove * speedX, rb.velocity.y);
             }
         }
-        public static void talk()
+        public void talk()
         {
-            //detect if the player use key down "E"
+
         }
-	}//end class
-} // end namespace
+        public void jump()
+        {
+            if (Input.GetKey("space"))
+            {
+                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y + 10);
+            }
+        }
+  
+    }//end class
 ```
 
 玩家代碼重構:
-```
-using InputController;
- void Update()
-{
-   InputController.ThePlayer.Movement(rb);
-}
-```
-現在只要 把自己的鋼體傳入，便可以在遊戲中進行互動。
-進行這項優化的主要原因，是我想把跟使用者互動有關的代碼移動到inputcontroller中
+![Alt text](image.png)
+現在只要初始化controller，就可以自己載入腳色的動作。
