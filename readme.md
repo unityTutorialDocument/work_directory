@@ -123,7 +123,10 @@ namespace InputController{
                 rb.velocity = new Vector2(horizontalmove * speedX, verticalmove*speedY);
             }
         }
-
+          public static void talk()
+        {
+            //detect if the player use key down "E"
+        }
 	}//end class
 } // end namespace
 ```
@@ -133,7 +136,7 @@ namespace InputController{
 using InputController;
  void Update()
 {
-    InputController.TheX.Movement(rb,speed);
+   InputController.ThePlayer.Movement(rb);
 }
 ```
 現在只要 把自己的鋼體傳入，便可以在遊戲中進行互動。
