@@ -141,3 +141,4 @@ using InputController;
 }
 ```
 現在只要 把自己的鋼體傳入，便可以在遊戲中進行互動。
+進行這項優化的主要原因，是我想把跟使用者互動有關的代碼移動到inputcontroller中
