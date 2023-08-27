@@ -156,4 +156,6 @@ namespace InputController{
 目前使用getter 來找尋控制器是否是在地上，如果在地上則使用飛翔的動畫(動畫位置入)，要確認角色是否真的在地上，還未完成正確的回傳值。
 玩家代碼重構:
 ![Alt text](image.png)
+目前想起來，跳躍應該是要被放在固定時間的FixedUpdate，會較為準確一點，而不應該以每一幀呼叫
+![Alt text](image-1.png)
 現在只要初始化controller，就可以自己載入腳色的動作。
