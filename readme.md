@@ -111,7 +111,7 @@ using UnityEngine;
 以上為了拿取 unity引擎的類型推斷(Rigidbody2D)
 */
 namespace InputController{
-	public class ThePlayer
+		public class ThePlayer
 	{
 		public static void Movement(Rigidbody2D rb, float speedX=10,float speedY=10)
 		{
@@ -120,10 +120,11 @@ namespace InputController{
 			float verticalmove = Input.GetAxis("Vertical");
             if (horizontalmove != 0||verticalmove!=0)
             {
+                // if only vertical changement in jump then should use rb.velocity.y instead of movement
                 rb.velocity = new Vector2(horizontalmove * speedX, verticalmove*speedY);
             }
         }
-          public static void talk()
+        public static void talk()
         {
             //detect if the player use key down "E"
         }
