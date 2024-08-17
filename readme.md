@@ -100,7 +100,7 @@ void Movement()
 # 開發:移動(自行優化)
 這段代碼感覺可以優化成設置一份InputController
 可以導入InputController
-並且將玩家的鋼體傳入，並且以淺拷貝的方式重新賦予玩家鋼體位置。
+並且將玩家的鋼體傳入，並且以傳址的方式重新賦予玩家鋼體位置。
 
 創立 InputController namespace 
 代碼如下
